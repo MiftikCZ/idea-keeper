@@ -95,6 +95,7 @@ main {
     border-left: #fff2 3px solid;
     width: 100%;
     transition: 250ms;
+  word-wrap: break-word;
 }
 
 .items .item .text:focus {
@@ -111,6 +112,7 @@ main {
     text-align: start;
     width: 100%;
     height: 100%;
+  word-wrap: break-word;
 }
 
 
