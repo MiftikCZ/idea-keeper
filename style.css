@@ -1,0 +1,190 @@
+:root {
+    --pad: 18px;
+}
+
+body {
+    color: #fefeff;
+    background: #0c0c0f;
+}
+
+.title {
+    padding: var(--pad);
+    width: 100%;
+    display: flex;
+}
+.f1{
+
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+.f1 .name {
+    font-weight: 500;
+    color: rgb(255, 194, 194);
+}
+
+.f2 {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+@media ( max-width: 620px ) {
+    .title {
+        justify-content: start;
+
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+    .f1 {
+        padding: 0 40px;
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    .f2 {
+        transform: translateY(-100%);
+        display: block;
+    }
+}
+
+.title .f1 .text {
+    color: #dadada;
+    font-size: 32px;
+}
+
+.title .f2 button {
+    vertical-align: middle;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    display: block;
+    color: #dadada;
+    transition: 250ms;
+}
+
+.title .f2 button .material-symbols-outlined {
+    font-size: 32px;
+}
+
+
+.title .f2 button:hover {
+    color: #fefeff;
+}
+
+main {
+    padding: 0 var(--pad);
+}
+
+.items {
+    justify-content: start;
+    gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+}
+
+.item {
+    display: inline-flex;
+    justify-content: start;
+    background: #fff1;
+    border-radius: 0px 5px 5px 0px;
+    border-left: #fff2 3px solid;
+    width: 100%;
+    transition: 250ms;
+}
+
+.items .item .text:focus {
+    outline: none;
+}
+
+.item:focus-within {
+    border-left: rgb(231, 141, 38) 3px solid;
+}
+
+.items .item .text {
+    padding: 12px;
+    display: block;
+    text-align: start;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+.items .item .smazat {
+    cursor: pointer;
+    background: hsl(0, 54%, 30%);
+    color: #fff5;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    transition: 250ms;
+}
+
+.fulladcont {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    display: inline-flex;
+    width: 100%;
+}
+
+.fulladcont .addcont {
+    padding: 16px;
+    display: flex;
+    gap: 5px;
+    justify-content: start;
+    background: #fff1;
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+    max-width: 550px;
+}
+
+.addcont .add {
+    vertical-align: middle;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #fff8;
+    background: hsl(120, 54%, 30%);
+    transition: 250ms;
+}
+
+
+.addcont .add .material-symbols-outlined {
+    font-size: 28px;
+    display: inline-flex;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.addcont .add:hover {
+    color: #fffe;
+}
+
+.items .item .smazat:hover {
+    color: #fffe;
+}
+
+.inputadd {
+    color: #fefeff;
+    border: none;
+    text-align: center;
+    width: 100%;
+    vertical-align: middle;
+    background: transparent;
+    font-size: 28px;
+    transition: 250ms;
+    border-bottom: #0004 3px solid;
+}
+
+.inputadd:focus {
+    outline: none;
+    border-bottom: hsl(120, 54%, 30%) 3px solid;
+}
