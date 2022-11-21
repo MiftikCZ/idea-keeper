@@ -49,7 +49,7 @@ function addTodo(text="Null",save=true,_i=il,_tm,addd=true) {
         text = document.getElementById("inputadd").value
         document.getElementById("inputadd").value = ""
     }
-    if(isValid(_tm)){
+    if(_tm.split(";")[0] == getDnesek(0) || _tm.split(";")[1] == getDnesek(0)){
         let add = ""
         if(_tm.split(";").at(-1)==getDnesek(0)&& !addd) {
             add="focus"
@@ -93,7 +93,7 @@ function getInt(int) {
 }
 function reloadTodos() {
     _data.todos.forEach(e => {
-        i+=addTodo(e.text,false, e.id,e.time,false)
+        addTodo(e.text,false, e.id,e.time,false)
     })
 }
 
