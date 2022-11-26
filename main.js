@@ -11,9 +11,13 @@ var data = {
 }
 
 var il = 0
-var _data = JSON.parse(data.get("data") || JSON.stringify({
+var _data = JSON.parse(data.get("data") && data.get("data") !== "undefined" ? data.get("data") : JSON.stringify({
     todos: [{}]
 }))
+
+var _import = async (url) => {
+    document.querySelector("head").innerHTML += `<link rel="stylesheet" href="${url}">`
+}
 
 function isValid(array) {
     let valid = false
@@ -36,6 +40,7 @@ function deleteTodo(id) {
     _data.todos = _data.todos.filter(e => e.id !== id)
     data.save("data",JSON.stringify(_data))
     document.getElementById("item-box-"+id).remove()
+    reloadTextTodos()
 }
 
 function addTodo(text="Null",save=true,_i=il,_tm,addd=true) {
@@ -77,12 +82,32 @@ function addTodo(text="Null",save=true,_i=il,_tm,addd=true) {
             })()
         })
         data.save("data",JSON.stringify(_data))
-        document.getElementById("nictuneni").innerHTML = ""
+        reloadTextTodos()
     }
     return 1
 }
 return 0
 
+}
+function resetStyles() {
+    data.save("hue","120")
+    data.save("style","dark")
+    data.save("hue2","350")
+    window.location.reload()
+}
+
+function removeOld() {
+    data.save("data", JSON.stringify({
+        todos: _data.todos.filter(
+            e=>e.time 
+            &&(
+                 e.time.split(";")[0] == getDnesek(0) 
+              || e.time.split(";")[1] == getDnesek(0)
+            )
+        )
+    }))
+    console.log("done!")
+    window.location.reload()
 }
 function getInt(int) {
     try {
@@ -91,12 +116,126 @@ function getInt(int) {
         return 1
     }
 }
+function reloadTextTodos() {
+    let l = (
+        _data.todos.filter(
+            e=>e.time 
+            &&(
+                 e.time.split(";")[0] == getDnesek(0) 
+              || e.time.split(";")[1] == getDnesek(0)
+            )
+        )
+    ).length
+    frawem.set("ideas",
+    `${l>0 
+        ? (
+           '<span class="name">'
+           + l + 
+           `</span> ${
+            l==1 ? "nápad" : (
+                l==2||l==3||l==4 ? "nápady" : "nápadů"
+            )
+            }`
+        ) : "<span class='nic'>žádné nápady...</span>"
+     }`
+    )
+}
 function reloadTodos() {
+    reloadTextTodos()
     _data.todos.forEach(e => {
         addTodo(e.text,false, e.id,e.time,false)
     })
 }
+function setTheme(theme = "dark") {
+    data.save("theme",theme.toLocaleLowerCase())
+}
+
+function setHueReal() {
+    document.querySelector("[fvar='hue']").style.color=`hsl(${document.getElementById("hue").value},100%,50%)`
+    document.querySelector(".hueIndc1").style.background=`hsl(${document.getElementById("hue").value},50%,48%)`
+
+
+    document.querySelector("[fvar='hue2']").style.color=`hsl(${document.getElementById("hue2").value},100%,50%)`
+    let h2 = document.getElementById("hue2").value
+    document.querySelector(".hueIndc2").style.background=`linear-gradient(90deg, hsl(calc(${h2} - 10), 50%, 47%), hsl(calc(${h2} + 10), 50%, 47%))`
+}
+
+function setHue() {
+    setHueReal()
+    frawem.set("hue",document.getElementById("hue").value)
+    data.save("hue",document.getElementById("hue").value)
+
+
+    frawem.set("hue2",document.getElementById("hue2").value)
+    data.save("hue2",document.getElementById("hue2").value)
+}
 
 window.onload = () => {
-    reloadTodos()
+    try {
+        reloadTodos()
+    } catch {
+
+    }
+
+    try {
+        let myTheme = data.get("theme") || "superdark"
+        console.log(myTheme)
+
+        let myHue = data.get("hue") || 120
+        let myHue2 = data.get("hue2") || 350
+        myHue = myHue.toString()
+        myHue2 = myHue2.toString()
+        if(!window.location.pathname.includes("settings")) {
+            // LOAD THEMES
+
+            switch (myTheme.toLocaleLowerCase()) {
+                case "superdark":
+                    _import("./styles/superdark.css")
+                    break
+                case "colored1":
+                    _import("./styles/colored1.css")
+                    break
+                default:
+                    _import("./styles/dark.css")
+                    break
+            }
+    
+            console.log(myHue)
+            document.head.innerHTML+=`<style>
+            :root {
+                --hue: ${myHue};
+                --hue2: ${myHue2};
+            }
+            </style>`
+
+            return
+        }
+
+        _import("./styles/superdark.css")
+        document.getElementById("hue").value=myHue
+        document.getElementById("hue2").value=myHue2
+        setHue()
+        frawem.set("hue",document.getElementById("hue").value)
+        switch (myTheme.toLocaleLowerCase()) {
+            case "superdark":
+                document.getElementById("inp2").checked=true
+                break
+
+            case "dark":
+                document.getElementById("inp1").checked=true
+                break
+
+
+            case "colored1":
+                    document.getElementById("inp3").checked=true
+                    break
+    
+
+            default:
+                document.getElementById("inp1").checked=true
+                break
+        }
+    } catch (error) {
+        console.log(error)
+    }   
 }
