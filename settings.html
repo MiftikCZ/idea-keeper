@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Idea Keeper</title>
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="./frawem/main.js"></script>
+    <script>
+        useMaterialIcons()
+    </script>
+</head>
+
+<body>
+    <div class="title">
+        <div class="f1">
+            <div class="text">
+                <span class="name name2">Nastavení</span>
+            </div>
+        </div>
+        <div class="f2">
+            <a href="./" style="text-decoration: none;">
+                <button class="settings">
+                    <span class="material-symbols-outlined bmt2">
+                        arrow_back
+                    </span>
+                </button>
+            </a>
+        </div>
+    </div>
+    <main>
+        <center>
+            <div class="items2">
+                <div class="item2">
+                    <div class="label">
+                        <span class="name">Theme:</span>
+                    </div>
+
+                    <div class="input">
+                        <label for="inp1">Dark</label>
+
+                        <input onclick="setTheme('dark')" type="radio" name="theme" value="inp1" id="inp1">
+
+
+                        <label for="inp2">Super Dark</label>
+
+                        <input type="radio" onclick="setTheme('superdark')" value="inp2" name="theme" id="inp2">
+
+
+                        <label for="inp2">Colorful</label>
+
+                        <input type="radio" onclick="setTheme('colored1')" value="inp3" name="theme" id="inp3">
+                    </div>
+                </div>
+
+                <div class="item2">
+                    <div class="label ">
+                        <span class="name hueIndc1">Color:</span>
+                    </div>
+
+                    <div class="input">
+
+                        <label for="hue" fvar="hue" class="hue"></label>
+                        <input oninput="setHue()" type="range" min="0" max="360" step="10" id="hue" value="120">
+                    </div>
+                </div>
+
+                <div class="item2">
+                    <div class="label ">
+                        <span class="name hueIndc2">Second Color:</span>
+                    </div>
+
+                    <div class="input">
+
+                        <label for="hue2" fvar="hue2" class="hue"></label>
+
+                        <input oninput="setHue()" type="range" min="0" max="360" step="10" id="hue2" value="350">
+                    </div>
+                </div>
+
+
+                <div class="item2">
+                    <div class="label hueIndc1">
+                        <span class="name">Smazat:</span>
+                    </div>
+
+                    <div class="input" style="gap:8px;display:inline-flex;flex-wrap:wrap;">
+                        <button onclick="removeOld()" class="btn_1">Staré nápady</button>
+                        <button onclick="resetStyles()" class="btn_3">Resetovat Styly</button>
+                    </div>
+                </div>
+            </div>
+        </center>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

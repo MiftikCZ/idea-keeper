@@ -1,0 +1,233 @@
+:root {
+    --pad: 18px;
+    --color2:#111;
+    --hue: 120;
+    --hue2:350;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    color: #fefeff;
+    background: linear-gradient(90deg, hsl(calc(var(--hue2) - 10), 50%, 47%), hsl(calc(var(--hue2) + 10), 50%, 47%));
+}
+
+.title {
+    padding: var(--pad);
+    width: 100%;
+    display: flex;
+    background: var(--color2);
+    border-radius: 0px 0px 20px 20px;
+    margin-bottom: var(--pad);
+}
+
+
+.nic {
+    color: #bababf;
+}
+
+.f1{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+.f1 .name {
+    font-weight: 600;
+    rotate: -5deg;
+    vertical-align: middle;
+    font-size: 1.2em;
+    display: inline-block;
+    color: hsl(var(--hue), 37%, 48%);
+}
+
+.f1 .name2 {
+    rotate: 0deg;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.f2 {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+@media ( max-width: 620px ) {
+    .title {
+        justify-content: start;
+
+    display: flex;
+    flex-wrap: wrap;
+    height: initial;
+    }
+
+    .f1 {
+        padding: 0 40px;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .f2 {
+        top:0;
+        padding: 22px 0px;
+        width: min-content;
+        /*transform: translateY(-100%);*/
+        display: block;
+        position: absolute;
+    }
+}
+
+.title .f1 .text {
+    color: #dadada;
+    font-size: 32px;
+}
+
+.title .f2 button {
+    vertical-align: middle;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    display: block;
+    color: #dadada;
+    transition: 250ms;
+}
+
+.title .f2 button .material-symbols-outlined {
+    font-size: 32px;
+    color: #bebebf;
+}
+
+.title .f2 button .bmt2 {
+    font-weight: 600;
+}
+
+.title .f2 button:hover {
+    color: #fefeff;
+}
+
+main {
+    padding: 0 var(--pad);
+    padding-bottom: 90px;
+}
+
+.items {
+    justify-content: start;
+    gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+}
+
+.item {
+    display: inline-flex;
+    justify-content: start;
+    background: #0009;
+    border: #0000 4px solid;
+    border-radius: 0px 5px 5px 0px;
+    border-left: #0005 6px solid;
+    width: 100%;
+    transition: 250ms;
+}
+
+.items .item .text:focus {
+    outline: none;
+}
+
+.focus {
+    border: #0002 2px solid;
+    border-left: rgb(255, 234, 0) 6px solid;
+    /*hsl(var(--hue), 70%, 50%)*/
+    /*background: #00500090;*/
+    background: hsl(calc(var(--hue2)), 50%, 47%);
+}
+
+.items .item .text {
+    padding: 12px;
+    display: block;
+    text-align: start;
+    width: 100%;
+    height: 100%;
+}
+
+.items .item .smazat {
+    cursor: pointer;
+    background: #f003;
+    color: #fff5;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    transition: 250ms;
+}
+
+.items .focus .smazat {
+    background: transparent;
+    color: rgb(255, 255, 255);
+}
+ 
+
+.fulladcont {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    display: inline-flex;
+    width: 100%;
+}
+
+.fulladcont .addcont {
+    padding: 16px;
+    display: flex;
+    gap: 5px;
+    justify-content: start;
+    background: var(--color2);
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+    max-width: 550px;
+}
+
+.addcont .add {
+    vertical-align: middle;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #fff8;
+    background: hsl(var(--hue), 54%, 30%);
+    transition: 250ms;
+}
+
+
+.addcont .add .material-symbols-outlined {
+    font-size: 28px;
+    display: inline-flex;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.addcont .add:hover {
+    color: #fffe;
+}
+
+.items .item .smazat:hover {
+    color: #fffe;
+    background: #f008;
+}
+
+.inputadd {
+    color: #fefeff;
+    border: none;
+    text-align: center;
+    width: 100%;
+    vertical-align: middle;
+    background: transparent;
+    font-size: 28px;
+    transition: 250ms;
+    border-bottom: #0004 3px solid;
+}
+
+.inputadd:focus {
+    outline: none;
+    border-bottom: hsl(var(--hue), 54%, 30%) 3px solid;
+}
