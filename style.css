@@ -1,84 +1,17 @@
-:root {
-    --pad: 18px;
-}
 
-body {
-    color: #fefeff;
-    background: #0c0c0f;
-}
 
-.title {
-    padding: var(--pad);
-    width: 100%;
-    display: flex;
-}
-.f1{
 
-    width: 100%;
-    display: flex;
-    justify-content: start;
-}
-.f1 .name {
-    font-weight: 500;
-    color: rgb(255, 194, 194);
-}
-
-.f2 {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-}
-
-@media ( max-width: 620px ) {
-    .title {
-        justify-content: start;
-
-    display: flex;
-    flex-wrap: wrap;
-    }
-
-    .f1 {
-        padding: 0 40px;
-        width: 100%;
-        display: block;
-        text-align: center;
-    }
-
-    .f2 {
-        transform: translateY(-100%);
-        display: block;
-    }
-}
-
-.title .f1 .text {
-    color: #dadada;
-    font-size: 32px;
-}
-
-.title .f2 button {
+.input {
     vertical-align: middle;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    display: block;
-    color: #dadada;
-    transition: 250ms;
-}
-
-.title .f2 button .material-symbols-outlined {
-    font-size: 32px;
 }
 
 
-.title .f2 button:hover {
-    color: #fefeff;
-}
 
-main {
-    padding: 0 var(--pad);
-}
-
-.items {
+.items2 {
+    padding: var(--pad);
+    font-size: 22px;
+    border-radius: 8px;
+    background: var(--color2);
     justify-content: start;
     gap: 5px;
     display: flex;
@@ -87,104 +20,64 @@ main {
     max-width: 800px;
 }
 
-.item {
-    display: inline-flex;
-    justify-content: start;
-    background: #fff1;
-    border-radius: 0px 5px 5px 0px;
-    border-left: #fff2 3px solid;
+.item2 {
+    border-top: #ffffff06 2px solid;
+    padding: 14px 0 12px 0;
     width: 100%;
-    transition: 250ms;
-}
-
-.items .item .text:focus {
-    outline: none;
-}
-
-.focus {
-    border-left: rgb(231, 141, 38) 3px solid;
-}
-
-.items .item .text {
-    padding: 12px;
-    display: block;
-    text-align: start;
-    width: 100%;
-    height: 100%;
-}
-
-
-
-.items .item .smazat {
-    cursor: pointer;
-    background: hsl(0, 54%, 30%);
-    color: #fff5;
     display: flex;
+    vertical-align: middle;
+
+}
+
+.item2 .label {
+    height: 100%;
+    vertical-align: middle;
+}
+
+
+.item2 .label .name {
+    display: flex;
+    background: #fff1;
+    height: 100%;
+    border-radius: 15px;
+    vertical-align: middle;
+    padding: 8px 26px;
     align-items: center;
-    padding: 0 8px;
-    transition: 250ms;
 }
 
-.fulladcont {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    justify-content: center;
-    display: inline-flex;
+.item2 .input {
+    padding: 8px 26px;
+    display: inline-block;
     width: 100%;
 }
 
-.fulladcont .addcont {
-    padding: 16px;
-    display: flex;
-    gap: 5px;
-    justify-content: start;
-    background: #fff1;
-    border-radius: 16px 16px 0 0;
-    width: 100%;
-    max-width: 550px;
+.hue {
+    font-weight: 500;
+
 }
 
-.addcont .add {
+#showold {
     vertical-align: middle;
-    padding: 8px;
-    cursor: pointer;
-    border-radius: 8px;
-    color: #fff8;
-    background: hsl(120, 54%, 30%);
-    transition: 250ms;
-}
-
-
-.addcont .add .material-symbols-outlined {
-    font-size: 28px;
-    display: inline-flex;
     height: 100%;
-    vertical-align: middle;
 }
 
-.addcont .add:hover {
-    color: #fffe;
+.btn_1 {
+    cursor: pointer;
+background: hsl(0, 5%, 15%);
+border: none;
+color: #bebebf;
+padding: 12px 14px;
+font-size: 22px;
+border-radius: 8px;
 }
 
-.items .item .smazat:hover {
-    color: #fffe;
-}
 
-.inputadd {
-    color: #fefeff;
+.btn_3 {
+    cursor: pointer;
+    background: rgb(114, 26, 26);
+    color: #bebebf;
     border: none;
-    text-align: center;
-    width: 100%;
-    vertical-align: middle;
-    background: transparent;
-    font-size: 28px;
-    transition: 250ms;
-    border-bottom: #0004 3px solid;
-}
-
-.inputadd:focus {
-    outline: none;
-    border-bottom: hsl(120, 54%, 30%) 3px solid;
+    padding: 12px 14px;
+    font-size: 22px;
+    border-radius: 8px;
 }
