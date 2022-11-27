@@ -170,6 +170,10 @@ function setHue() {
     data.save("hue2",document.getElementById("hue2").value)
 }
 
+function setTheme2(d="dark") {
+    data.save("ttheme",d)
+}
+
 window.onload = () => {
     try {
         reloadTodos()
@@ -179,6 +183,7 @@ window.onload = () => {
 
     try {
         let myTheme = data.get("theme") || "superdark"
+        let myTheme2 = data.get("ttheme") || "dark"
         console.log(myTheme)
 
         let myHue = data.get("hue") || 120
@@ -187,13 +192,17 @@ window.onload = () => {
         myHue2 = myHue2.toString()
         if(!window.location.pathname.includes("settings")) {
             // LOAD THEMES
-
             switch (myTheme.toLocaleLowerCase()) {
                 case "superdark":
                     _import("./styles/superdark.css")
                     break
                 case "colored1":
                     _import("./styles/colored1.css")
+                    if(data.get("ttheme")=="light") {
+                        _import("./styles/tnwhite.css")
+                    } else {
+                        _import("./styles/tndark.css")
+                    }
                     break
                 default:
                     _import("./styles/dark.css")
@@ -201,13 +210,14 @@ window.onload = () => {
             }
     
             console.log(myHue)
+
+
             document.head.innerHTML+=`<style>
             :root {
                 --hue: ${myHue};
                 --hue2: ${myHue2};
             }
             </style>`
-
             return
         }
 
@@ -235,6 +245,15 @@ window.onload = () => {
                 document.getElementById("inp1").checked=true
                 break
         }
+        switch (myTheme2.toLocaleLowerCase()) {
+            case "light":
+                document.getElementById("tn2").checked=true
+                break
+            default:
+                document.getElementById("tn1").checked=true
+                break
+        }
+        frawem.valid()
     } catch (error) {
         console.log(error)
     }   

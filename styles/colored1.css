@@ -143,6 +143,7 @@ main {
     background: hsl(calc(var(--hue2)), 50%, 47%);
 }
 
+
 .items .item .text {
     padding: 12px;
     display: block;

@@ -18,46 +18,71 @@ body {
 }
 `
 
-document.head.innerHTML+=`<style>${style}</style>`
+document.head.innerHTML += `<style>${style}</style>`
 
 function useMaterialIcons() {
-    document.head.innerHTML+=`<link rel="stylesheet"
+    document.head.innerHTML += `<link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />`
 }
 
 var frawem = {
-        string: "string",
-        s: this.string,
+    string: "string",
+    s: this.string,
 
-        element: "element",
-        elem: this.element,
-        e: this.element,
+    element: "element",
+    elem: this.element,
+    e: this.element,
 
-        reset_elem: "reset-element",
-        re: this.reset_elem,
-    
+    reset_elem: "reset-element",
+    re: this.reset_elem,
+
     data: data,
-    set: function (variable="string",content="content",type=this.string) {
+
+    valid: function () {
+        document.querySelectorAll("[show-if]").forEach(el => {
+            let a = el.getAttribute("show-if").split(";")
+            a.forEach(ael => {
+                for (let i = 0; i < document.frForm.theme.length; i++) {
+                    let ee = document.frForm.theme.item(i)
+                    if (ee.id == ael && ee.checked) {
+                        el.style.display = "inline-flex"
+                    } else {
+                        el.style.display = "none"
+                    }
+                    ee.addEventListener("input", e => {
+                        if (e.currentTarget.id == ael) {
+                            el.style.display = "inline-flex"
+                        } else {
+                            el.style.display = "none"
+                        }
+                    })
+                }
+            })
+        })
+
+    },
+
+    set: (Var = "string", Content = "content", Type = this.string) => {
         let back = true
-        document.querySelectorAll("[fvar]").forEach(e=>{
-            if(e.getAttribute("fvar")==variable) {
-                back=false
-                if(type=="element"||type=="reset-element") {
-                    if(type=="reset-element") e.innerHTML=""
-                    e.appendChild(content)
+        document.querySelectorAll("[fvar]").forEach(e => {
+            if (e.getAttribute("fvar") == Var) {
+                back = false
+                if (Type == "element" || Type == "reset-element") {
+                    if (Type == "reset-element") e.innerHTML = ""
+                    e.appendChild(Content)
                 } else {
-                    e.innerHTML=content
+                    e.innerHTML = Content
                 }
             }
         })
-        if(back) {
-            this.dec(variable,content,type)
+        if (back) {
+            this.dec(Var, Content, Type)
         }
     },
 
-    dec: function(variable="string") {
+    dec: function (variable = "string") {
         var _txt = document.querySelector("body").innerHTML
-        _txt = _txt.split(`{${variable}}`).join("<span fvar='"+variable+"'></span>")
+        _txt = _txt.split(`{${variable}}`).join("<span fvar='" + variable + "'></span>")
         document.querySelector("body").innerHTML = _txt
     }
 }
@@ -67,7 +92,7 @@ var data = {
         return localStorage.setItem(key, value)
     },
     get: (key) => {
-        if(localStorage.getItem(key) == "null" || !localStorage.getItem(key)){
+        if (localStorage.getItem(key) == "null" || !localStorage.getItem(key)) {
             return null
         }
         return localStorage.getItem(key) || null
@@ -76,25 +101,25 @@ var data = {
 
 var mkit = {
     cycle: (n, m) => {
-        return ((n/m)-Math.floor(n/m))*m
+        return ((n / m) - Math.floor(n / m)) * m
     },
-        
+
     round: (x) => {
         return Math.round(x)
     },
 
     min: (x, min) => {
-        if(x<min) return 0
-        else return x-min
+        if (x < min) return 0
+        else return x - min
     },
 
     max: (x, max) => {
-        if(x>max) return max
+        if (x > max) return max
         else return x
     },
 
     fract: (x) => {
-        let c = x-Math.floor(x)
+        let c = x - Math.floor(x)
         return c
     },
 }

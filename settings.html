@@ -33,26 +33,44 @@
     </div>
     <main>
         <center>
+            <form name="frForm">
             <div class="items2">
                 <div class="item2">
                     <div class="label">
                         <span class="name">Styl:</span>
                     </div>
 
-                    <div class="input">
-                        <label for="inp1">Tmavý</label>
+                    <div class="input inputradio">
+                            <label for="inp1">Tmavý</label>
 
-                        <input onclick="setTheme('dark')" type="radio" name="theme" value="inp1" id="inp1">
+                            <input onclick="setTheme('dark')" type="radio" name="theme" value="inp1" id="inp1"><br>
+    
+                        
+                            <label for="inp2">Super tmavý</label>
+    
+                            <input type="radio" onclick="setTheme('superdark')" value="inp2" name="theme" id="inp2"><br>
+    
+    
+                            <label for="inp2">Barevný</label>
+    
+                            <input type="radio" onclick="setTheme('colored1')" value="inp3" name="theme" id="inp3">
+                    </div>
+                </div>
+
+                <div class="item2" show-if="inp3">
+                    <div class="label ">
+                        <span class="name">Styl nápadů:</span>
+                    </div>
+
+                    <div class="input inputradio">
+                        <label for="tn1">Tmavý</label>
+    
+                        <input type="radio" onclick="setTheme2('dark')" value="tn1" name="ttheme" id="tn1"><br>
 
 
-                        <label for="inp2">Super tmavý</label>
+                        <label for="tn2">Světlý</label>
 
-                        <input type="radio" onclick="setTheme('superdark')" value="inp2" name="theme" id="inp2">
-
-
-                        <label for="inp2">Barevný</label>
-
-                        <input type="radio" onclick="setTheme('colored1')" value="inp3" name="theme" id="inp3">
+                        <input type="radio" onclick="setTheme2('light')" value="tn2" name="ttheme" id="tn2">
                     </div>
                 </div>
 
@@ -68,7 +86,7 @@
                     </div>
                 </div>
 
-                <div class="item2">
+                <div class="item2" show-if="inp3">
                     <div class="label ">
                         <span class="name hueIndc2">Druhý odstín:</span>
                     </div>
@@ -93,6 +111,8 @@
                     </div>
                 </div>
             </div>
+        </form>
+
         </center>
     </main>
 

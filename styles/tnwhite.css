@@ -1,0 +1,34 @@
+.item {
+    display: inline-flex;
+    justify-content: start;
+    border-radius: 0px 5px 5px 0px;
+    width: 100%;
+    transition: 250ms;
+    border: #0002 2px solid;
+    border-left: #0004 6px solid;
+    color: #e1e1e1;
+    background: hsl(var(--hue2), 50%, 42%);
+}
+
+
+.items .item .smazat {
+    cursor: pointer;
+    background: #f003;
+    color: #fff5;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    transition: 250ms;
+    background: transparent;
+    color: rgb(255, 255, 255);
+}
+
+
+.focus {
+    border: #0002 2px solid;
+    color: #fefeff;
+    border-left: hsl(56, 100%, 50%) 6px solid;
+    background: hsl(calc(var(--hue2)), 50%, 47%);
+}
+
+

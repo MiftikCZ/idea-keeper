@@ -1,0 +1,27 @@
+.item {
+    display: inline-flex;
+    justify-content: start;
+    background: #0009;
+    border: #0000 3px solid;
+    border-radius: 0px 5px 5px 0px;
+    border-left: #0005 6px solid;
+    width: 100%;
+    transition: 250ms;
+}
+
+
+.items .item .smazat {
+    cursor: pointer;
+    background: #f003;
+    color: #fff5;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    transition: 250ms;
+}
+
+
+.focus {
+    border: #0000 3px solid;
+    border-left: darkorange 6px solid;
+}

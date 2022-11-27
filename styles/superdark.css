@@ -209,7 +209,7 @@ main {
 .inputadd {
     color: #fefeff;
     border: none;
-    text-align: center;
+    text-align: end;
     width: 100%;
     vertical-align: middle;
     background: transparent;

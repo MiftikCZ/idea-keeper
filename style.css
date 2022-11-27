@@ -47,9 +47,13 @@
 
 .item2 .input {
     padding: 8px 26px;
-    display: inline-block;
     width: 100%;
 }
+
+.item2 .inputradio {
+    display: inline-block;
+}
+
 
 .hue {
     font-weight: 500;
