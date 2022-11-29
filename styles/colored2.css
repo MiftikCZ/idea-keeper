@@ -1,0 +1,21 @@
+body {
+    animation: anim linear infinite 12s;
+}
+
+@keyframes anim {
+    0% {
+        background: red;
+    }
+
+    25% {
+        background: blue;
+    }
+
+    75% {
+        background: green;
+    }
+
+    100% {
+        background: red;
+    }
+}
