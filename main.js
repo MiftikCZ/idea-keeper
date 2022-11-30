@@ -210,6 +210,7 @@ window.onload = () => {
                 
                 case "colored3":
                         _import("./styles/colored1.css")
+                        _import("./styles/tndark.css")
                         _import("./styles/colored3.css")
                         break
                 default:
