@@ -36,6 +36,10 @@ function getDnesek(add = 0) {
     return dt
 }
 
+function setBg(bg) {
+    data.save("background",bg)
+}
+
 function deleteTodo(id) {
     _data.todos = _data.todos.filter(e => e.id !== id)
     data.save("data", JSON.stringify(_data))
@@ -212,6 +216,13 @@ window.onload = () => {
                         _import("./styles/colored1.css")
                         _import("./styles/tndark.css")
                         _import("./styles/colored3.css")
+                        document.head.innerHTML+=`<style>
+                        body{background:url("${data.get("background") || "../images/photo1.jpeg"}") no-repeat center center fixed;
+                        -webkit-background-size: cover;
+                        -moz-background-size: cover;
+                        -o-background-size: cover;
+                        background-size: cover;
+                        }</style>`
                         break
                 default:
                     _import("./styles/dark.css")

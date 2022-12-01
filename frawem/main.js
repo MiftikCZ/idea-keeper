@@ -41,11 +41,12 @@ var frawem = {
     valid: function () {
         document.querySelectorAll("[show-if]").forEach(el => {
             let a = el.getAttribute("show-if").split(";")
+            let t = false
             a.forEach(ael => {
                 for (let i = 0; i < document.frForm.theme.length; i++) {
                     let ee = document.frForm.theme.item(i)
                     if (ee.id == ael && ee.checked) {
-                        el.style.display = "inline-flex"
+                        t = true
                     } else {
                         el.style.display = "none"
                     }
@@ -58,6 +59,8 @@ var frawem = {
                     })
                 }
             })
+            if(t) el.style.display = "inline-flex"
+            
         })
 
     },
