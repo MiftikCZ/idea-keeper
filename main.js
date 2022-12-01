@@ -217,7 +217,7 @@ window.onload = () => {
                         _import("./styles/tndark.css")
                         _import("./styles/colored3.css")
                         document.head.innerHTML+=`<style>
-                        body{background:url("${data.get("background") || "../images/photo1.jpeg"}") no-repeat center center fixed;
+                        body{background:url("${data.get("background") || "./images/photo1.jpeg"}") no-repeat center center fixed;
                         -webkit-background-size: cover;
                         -moz-background-size: cover;
                         -o-background-size: cover;
