@@ -85,3 +85,56 @@ border-radius: 8px;
     font-size: 22px;
     border-radius: 8px;
 }
+
+.otazka {
+    top: 50%;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    border: #0004 8px solid;
+    border-radius: 20px;
+    padding: 20px;
+    position: fixed;
+    max-width: 450px;
+    max-height: 600px;
+    background: #222228;
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    z-index: 500;
+}
+
+.otazka input {
+    font-size: 0.8em;
+}
+
+#bginput {
+    width: 100%;
+    height: 100%;
+}
+
+.close {
+    font-size: 0.9em;
+    background: hsl(0,37%,48%);
+    color: #fff8;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 8px;
+}
+
+
+.big {
+    width: 100%;
+}
+
+[souborbtn] {
+
+        background-color: #4CAF50; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      
+}

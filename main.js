@@ -37,7 +37,7 @@ function getDnesek(add = 0) {
 }
 
 function setBg(bg) {
-    data.save("background",bg)
+    localStorage.setItem("background",bg)
 }
 
 function deleteTodo(id) {
@@ -216,13 +216,15 @@ window.onload = () => {
                         _import("./styles/colored1.css")
                         _import("./styles/tndark.css")
                         _import("./styles/colored3.css")
-                        document.head.innerHTML+=`<style>
+                        let ttt = `<style>
                         body{background:url("${data.get("background") || "./images/photo1.jpeg"}") no-repeat center center fixed;
                         -webkit-background-size: cover;
                         -moz-background-size: cover;
                         -o-background-size: cover;
                         background-size: cover;
                         }</style>`
+                        document.head.innerHTML+=ttt
+                        console.log(ttt)
                         break
                 default:
                     _import("./styles/dark.css")
@@ -286,8 +288,30 @@ window.onload = () => {
                 document.getElementById("tn1").checked = true
                 break
         }
-        frawem.valid()
     } catch (error) {
         console.log(error)
     }
+}
+
+
+function getBase64(file) {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      setBg(reader.result.toString());
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
+ }
+
+var otazka = () => {
+    let input = document.createElement('input');
+    input.type = 'file';
+    input.onchange = _ => {
+        let file =   input.files[0];
+        getBase64(file)
+    };
+    input.click();
+
 }
