@@ -173,6 +173,10 @@ function setHue() {
     data.save("hue2", document.getElementById("hue2").value)
 }
 
+function setTheme3(d) {
+    data.save("blurtop",`${!!d}`)
+}
+
 function setTheme2(d = "dark") {
     data.save("ttheme", d)
 }
@@ -187,7 +191,6 @@ window.onload = () => {
     try {
         let myTheme = data.get("theme") || "superdark"
         let myTheme2 = data.get("ttheme") || "dark"
-        console.log(myTheme)
 
         let myHue = data.get("hue") || 120
         let myHue2 = data.get("hue2") || 350
@@ -222,16 +225,20 @@ window.onload = () => {
                         -moz-background-size: cover;
                         -o-background-size: cover;
                         background-size: cover;
+
+
+                        
                         }</style>`
-                        document.head.innerHTML+=ttt
                         console.log(ttt)
+                        document.head.innerHTML+=ttt
                         break
                 default:
                     _import("./styles/dark.css")
                     break
             }
 
-            console.log(myHue)
+
+            console.log(data.get("blurtop"))
 
 
             document.head.innerHTML += `<style>
@@ -239,7 +246,22 @@ window.onload = () => {
                 --hue: ${myHue};
                 --hue2: ${myHue2};
             }
+                ${1<0 ? `
+                        .title * {
+                            text-shadow: #000 0 0 8px;
+                        }
+                        
+                        .title {
+                            background: #0002 !important;
+                        }
+                        
+                        .fulladcont .addcont {
+                            background: rgba(9, 9, 9, 0.933)  !important;
+                        }
+                        ` : ""}
+            
             </style>`
+            
             return
         }
 
@@ -288,6 +310,7 @@ window.onload = () => {
                 document.getElementById("tn1").checked = true
                 break
         }
+
     } catch (error) {
         console.log(error)
     }

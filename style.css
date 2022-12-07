@@ -1,23 +1,45 @@
+* {
+    box-sizing: border-box;
+}
 
+:root {
+    --color3: #222228;
+    --color4: #000;
+    --labelw: 200px;
+}
 
+.settings {
+    background: var(--color3);
+    overflow-x: hidden;
+}
+
+.settings main {
+    padding: 0;
+    width: 100vw;
+    margin: 0;
+    padding: 0 18px;
+    display: block;
+}
 
 .input {
     vertical-align: middle;
 }
 
+.settings .title {
+    background: #020208;
+}
 
 
 .items2 {
     padding: var(--pad);
     font-size: 22px;
     border-radius: 8px;
-    background: var(--color2);
+    border: var(--color4) 0px solid;
     justify-content: start;
     gap: 5px;
-    display: flex;
-    flex-wrap: wrap;
+    display: inline-flex;
+    flex-direction: column;
     width: 100%;
-    max-width: 800px;
 }
 
 .item2 {
@@ -30,28 +52,40 @@
 }
 
 .item2 .label {
+    text-align: center;
     height: 100%;
+    width: 200px;
     vertical-align: middle;
 }
 
 
+.inputradio label {
+    display: inline-block;
+    padding: 3px 0;
+}
+
 .item2 .label .name {
     display: flex;
-    background: #fff1;
     height: 100%;
     border-radius: 15px;
     vertical-align: middle;
-    padding: 8px 26px;
+    padding: 20px 12px;
+    justify-content: center;
     align-items: center;
 }
 
 .item2 .input {
+    color: #bebebf;
+    justify-content: start;
+    display: flex;
     padding: 8px 26px;
+    align-items: center;
     width: 100%;
 }
 
 .item2 .inputradio {
     display: inline-block;
+    text-align: start;
 }
 
 
@@ -67,18 +101,18 @@
 
 .btn_1 {
     cursor: pointer;
-background: hsl(0, 5%, 15%);
-border: none;
-color: #bebebf;
-padding: 12px 14px;
-font-size: 22px;
-border-radius: 8px;
+    background: transparent;
+    border: mediumslateblue 1px solid;
+    color: #bebebf;
+    padding: 12px 14px;
+    font-size: 22px;
+    border-radius: 8px;
 }
 
 
 .btn_3 {
     cursor: pointer;
-    background: rgb(114, 26, 26);
+    background: #B71C1C;
     color: #bebebf;
     border: none;
     padding: 12px 14px;
@@ -86,55 +120,6 @@ border-radius: 8px;
     border-radius: 8px;
 }
 
-.otazka {
-    top: 50%;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    border: #0004 8px solid;
-    border-radius: 20px;
-    padding: 20px;
-    position: fixed;
-    max-width: 450px;
-    max-height: 600px;
-    background: #222228;
-    width: 100%;
-    height: 100%;
-    font-size: 24px;
-    z-index: 500;
-}
-
-.otazka input {
-    font-size: 0.8em;
-}
-
-#bginput {
-    width: 100%;
-    height: 100%;
-}
-
-.close {
-    font-size: 0.9em;
-    background: hsl(0,37%,48%);
-    color: #fff8;
-    border: none;
-    padding: 5px 8px;
-    border-radius: 8px;
-}
-
-
-.big {
-    width: 100%;
-}
-
-[souborbtn] {
-
-        background-color: #4CAF50; /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-      
+.btn1_ {
+    background: mediumslateblue;
 }

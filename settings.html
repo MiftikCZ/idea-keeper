@@ -14,7 +14,7 @@
     </script>
 </head>
 
-<body>
+<body class="settings">
 
     <div class="title">
         <div class="f1">
@@ -86,16 +86,34 @@
                         <input type="radio" onclick="setTheme2('light')" value="tn2" name="ttheme" id="tn2">
                     </div>
                 </div>
+
+                <div class="item2" show-if="inp3" style="display:none !important">
+                    <div class="label ">
+                        <span class="name">Styl UI:</span>
+                    </div>
+
+                    <div class="input inputradio">
+                        <label for="tn1">Průhledný</label>
+    
+                        <input type="radio" onclick="setTheme3('blur')" value="tn1_" name="ttheme" id="tn1_"><br>
+
+
+                        <label for="tn2">Výchozí</label>
+
+                        <input type="radio" onclick="setTheme3(false)" value="tn2_" name="ttheme" id="tn2_">
+                    </div>
+                </div>
+
                 <div class="item2" show-if="inp5">
                     <div class="label">
                         <span class="name">Tapeta:</span>
                     </div>
 
                     <div class="input" style="gap:8px;display:inline-flex;flex-wrap:wrap;">
+                        <button onclick="otazka()" class="btn_1 btn1_">Soubor</button>
                         <button onclick="setBg('./images/photo1.jpeg')" class="btn_1">Výchozí</button>
-                        <button onclick="setBg(prompt('paste your full link to the background'))" class="btn_1">Odkaz</button>
+                        <button onclick="setBg(prompt('Sem zadej celý odkaz na pozadí'))" class="btn_1">Odkaz</button>
                         
-                        <button onclick="otazka()" class="btn_1">Soubor</button>
                     </div>
                 </div>
                 <div class="item2">
@@ -131,7 +149,7 @@
 
                     <div class="input" style="gap:8px;display:inline-flex;flex-wrap:wrap;">
                         <button onclick="removeOld()" class="btn_1">Staré nápady</button>
-                        <button onclick="resetStyles()" class="btn_3">Resetovat Styly</button>
+                        <button onclick="localStorage.clear();window.location.reload()" class="btn_3" title="Tohle smaže všechny nápady, styly a nastavení které jste kdy uložily!">RESETOVAT</button>
                     </div>
                 </div>
             </div>
