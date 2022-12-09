@@ -28,7 +28,7 @@
     border: #0002 2px solid;
     color: #fefeff;
     border-left: hsl(56, 100%, 50%) 6px solid;
-    background: hsl(calc(var(--hue2)), 50%, 47%);
+    background: #0009;
 }
 
 

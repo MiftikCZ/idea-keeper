@@ -41,32 +41,44 @@
                     </div>
 
                     <div class="input inputradio">
-                            <label for="inp1">Tmavý</label>
+                        <div>
+
+                            <label for="inp2">Tmavý</label>
+
+                            <input type="radio" onclick="setTheme('superdark')" value="inp2" name="theme" id="inp2"><br>
+                        </div>
+
+
+                        <div>
+                            <label for="inp1">Tmavý++</label>
 
                             <input onclick="setTheme('dark')" type="radio" name="theme" value="inp1" id="inp1"><br>
-    
-                        
-                            <label for="inp2">Super tmavý</label>
-    
-                            <input type="radio" onclick="setTheme('superdark')" value="inp2" name="theme" id="inp2"><br>
-    
-    
-                            <label for="inp4">Barevný Animovaný</label>
-    
+                        </div>
+
+                        <div>
+
+
+                            <label for="inp4">Animovaný</label>
+
                             <input type="radio" onclick="setTheme('colored2')" value="inp4" name="theme" id="inp4"> <br>
+                        </div>
+                        <div>
 
 
                             <label for="inp2">Barevný</label>
-    
-                            <input type="radio" onclick="setTheme('colored1')" value="inp3" name="theme" id="inp3">  <br>
+
+                            <input type="radio" onclick="setTheme('colored1')" value="inp3" name="theme" id="inp3"> <br>
+                        </div>
+                        <div>
 
                             <label for="inp5">Fotka</label>
-    
+
                             <input type="radio" onclick="setTheme('colored3')" value="inp5" name="theme" id="inp5">
+                        </div>
 
 
-    
-                            
+
+
                     </div>
                 </div>
 
@@ -76,14 +88,18 @@
                     </div>
 
                     <div class="input inputradio">
-                        <label for="tn1">Tmavý</label>
-    
-                        <input type="radio" onclick="setTheme2('dark')" value="tn1" name="ttheme" id="tn1"><br>
+                        <div>
+                            <label for="tn1">Tmavý</label>
+
+                            <input type="radio" onclick="setTheme2('dark')" value="tn1" name="ttheme" id="tn1"><br>
+                        </div>
+                        <div>
 
 
-                        <label for="tn2">Světlý</label>
+                            <label for="tn2">Světlý</label>
 
-                        <input type="radio" onclick="setTheme2('light')" value="tn2" name="ttheme" id="tn2">
+                            <input type="radio" onclick="setTheme2('light')" value="tn2" name="ttheme" id="tn2">
+                        </div>
                     </div>
                 </div>
 
@@ -94,13 +110,25 @@
 
                     <div class="input inputradio">
                         <label for="tn1">Průhledný</label>
-    
+
                         <input type="radio" onclick="setTheme3('blur')" value="tn1_" name="ttheme" id="tn1_"><br>
 
 
                         <label for="tn2">Výchozí</label>
 
                         <input type="radio" onclick="setTheme3(false)" value="tn2_" name="ttheme" id="tn2_">
+                    </div>
+                </div>
+
+                <div class="item2">
+                    <div class="label">
+                        <span class="name">Způsob UI:</span>
+                    </div>
+
+                    <div class="input" style="gap:8px;display:inline-flex;flex-wrap:wrap;">
+                        <button onclick="setTheme3(true)" class="btn_1">Průhledný</button>
+
+                        <button onclick="setTheme3(false)" class="btn_1">Neprůhledný</button>
                     </div>
                 </div>
 
@@ -113,7 +141,7 @@
                         <button onclick="otazka()" class="btn_1 btn1_">Soubor</button>
                         <button onclick="setBg('./images/photo1.jpeg')" class="btn_1">Výchozí</button>
                         <button onclick="setBg(prompt('Sem zadej celý odkaz na pozadí'))" class="btn_1">Odkaz</button>
-                        
+
                     </div>
                 </div>
                 <div class="item2">
@@ -149,7 +177,8 @@
 
                     <div class="input" style="gap:8px;display:inline-flex;flex-wrap:wrap;">
                         <button onclick="removeOld()" class="btn_1">Staré nápady</button>
-                        <button onclick="localStorage.clear();window.location.reload()" class="btn_3" title="Tohle smaže všechny nápady, styly a nastavení které jste kdy uložily!">RESETOVAT</button>
+                        <button onclick="localStorage.clear();window.location.reload()" class="btn_3"
+                            title="Tohle smaže všechny nápady, styly a nastavení které jste kdy uložily!">RESETOVAT</button>
                     </div>
                 </div>
             </div>

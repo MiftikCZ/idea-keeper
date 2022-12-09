@@ -174,7 +174,7 @@ function setHue() {
 }
 
 function setTheme3(d) {
-    data.save("blurtop",`${!!d}`)
+    data.save("blurtop",d)
 }
 
 function setTheme2(d = "dark") {
@@ -229,7 +229,6 @@ window.onload = () => {
 
                         
                         }</style>`
-                        console.log(ttt)
                         document.head.innerHTML+=ttt
                         break
                 default:
@@ -246,7 +245,7 @@ window.onload = () => {
                 --hue: ${myHue};
                 --hue2: ${myHue2};
             }
-                ${1<0 ? `
+            ${data.get("blurtop") == "true" ? `
                         .title * {
                             text-shadow: #000 0 0 8px;
                         }
@@ -258,7 +257,7 @@ window.onload = () => {
                         .fulladcont .addcont {
                             background: rgba(9, 9, 9, 0.933)  !important;
                         }
-                        ` : ""}
+            ` : ""}
             
             </style>`
             

@@ -84,10 +84,37 @@
 }
 
 .item2 .inputradio {
-    display: inline-block;
-    text-align: start;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
 }
 
+.item2 .inputradio div {
+    width: 100%;
+    border-bottom: #0003 1px dashed;
+    padding: 2px 0;
+    display: flex;
+    text-align: end;
+    align-self: flex-start;
+}
+
+.item2 .inputradio div input {
+    justify-self: end;
+    align-self: center;
+    display: inline-flex;
+    text-align: end;
+}
+
+
+
+.item2 .inputradio div label {
+    justify-self: start;
+    width: 100%;
+    align-self: flex-start;
+    display: inline-flex;
+
+}
 
 .hue {
     font-weight: 500;
@@ -109,6 +136,23 @@
     border-radius: 8px;
 }
 
+.btn_1:not(:active) {
+    animation: animb 250ms forwards ease-in-out;
+}
+
+@keyframes animb {
+    0% {
+        background: transparent;
+    }
+
+    50% {
+        border: #33b71c 1px solid;
+    }
+
+    100% {
+        background: transparent;
+    }
+}
 
 .btn_3 {
     cursor: pointer;
@@ -121,5 +165,5 @@
 }
 
 .btn1_ {
-    background: mediumslateblue;
+    background: mediumslateblue !important;
 }
