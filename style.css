@@ -9,26 +9,17 @@
 body {
     height: 100vh;
     overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  
 }
 main {
     padding: 0 var(--pad);
     padding-bottom: 90px;
-    margin-top: 100px;
 }
 
-body {
-    overflow-y: scroll;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-}
 body::-webkit-scrollbar { /* WebKit */
     width: 0;
     height: 0;
-}
-
-.title {
-    top: 0;
-    position: fixed;
 }
 
 .settings {
@@ -45,7 +36,6 @@ body::-webkit-scrollbar { /* WebKit */
     width: 100vw;
     margin: 0;
     padding: 0 18px;
-    margin-top: 95px;
     display: block;
 }
 
