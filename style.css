@@ -1,7 +1,6 @@
 * {
     box-sizing: border-box;
 }
-
 :root {
     --color3: #222228;
     --color4: #000;
@@ -9,13 +8,27 @@
 }
 body {
     height: 100vh;
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 main {
-    overflow-y: auto;
-    max-height: 100%;
     padding: 0 var(--pad);
-    padding-bottom: 200px !important;
+    padding-bottom: 90px;
+    margin-top: 100px;
+}
+
+body {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+body::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}
+
+.title {
+    top: 0;
+    position: fixed;
 }
 
 .settings {
@@ -32,8 +45,8 @@ main {
     width: 100vw;
     margin: 0;
     padding: 0 18px;
+    margin-top: 95px;
     display: block;
-    padding-bottom: 90px !important;
 }
 
 .input {
