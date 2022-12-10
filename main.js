@@ -29,6 +29,15 @@ function isValid(array) {
     return valid
 }
 
+function removeLast() {
+    localStorage.removeItem("last")
+}
+
+function addOldTodo() {
+    let v = !!data.get("last") && data.get("last") != "undefined" ? data.get("last") || "nic" : "nic"
+    alert(v)
+}
+
 function getDnesek(add = 0) {
     let date = new Date()
     let dt = (date.getUTCDate() + add).toString() + date.getMonth().toString() + date.getUTCFullYear().toString()
@@ -41,7 +50,12 @@ function setBg(bg) {
 }
 
 function deleteTodo(id) {
-    _data.todos = _data.todos.filter(e => e.id !== id)
+    _data.todos = _data.todos.filter(e => {
+        if(e.id==id) {
+            data.save("last",e.text||"")
+        }
+        return e.id !== id
+    })
     data.save("data", JSON.stringify(_data))
     document.getElementById("item-box-" + id).remove()
     reloadTextTodos()
@@ -237,7 +251,6 @@ window.onload = () => {
             }
 
 
-            console.log(data.get("blurtop"))
 
 
             document.head.innerHTML += `<style>
@@ -335,5 +348,4 @@ var otazka = () => {
         getBase64(file)
     };
     input.click();
-
 }

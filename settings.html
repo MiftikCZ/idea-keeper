@@ -132,6 +132,18 @@
                     </div>
                 </div>
 
+                <div class="item2">
+                    <div class="label">
+                        <span class="name">Poslední smazaný:</span>
+                    </div>
+
+                    <div class="input" style="gap:8px;display:inline-flex;flex-wrap:wrap;">
+                        <button onclick="addOldTodo()" class="btn_1">Ukázat</button>
+                        <button onclick="removeLast()" class="btn_1">Smazat</button>
+                    </div>
+                </div>
+
+
                 <div class="item2" show-if="inp5">
                     <div class="label">
                         <span class="name">Tapeta:</span>
@@ -177,6 +189,8 @@
 
                     <div class="input" style="gap:8px;display:inline-flex;flex-wrap:wrap;">
                         <button onclick="removeOld()" class="btn_1">Staré nápady</button>
+
+                        <button onclick="removeLast()" class="btn_1">Poslední smazaný</button>
                         <button onclick="localStorage.clear();window.location.reload()" class="btn_3"
                             title="Tohle smaže všechny nápady, styly a nastavení které jste kdy uložily!">RESETOVAT</button>
                     </div>

@@ -105,12 +105,6 @@ body {
 .title .f2 button:hover {
     color: #fefeff;
 }
-
-main {
-    padding: 0 var(--pad);
-    padding-bottom: 90px;
-}
-
 .items {
     justify-content: start;
     gap: 5px;
@@ -138,9 +132,7 @@ main {
 .focus {
     border: #0002 2px solid;
     border-left: rgb(255, 234, 0) 6px solid;
-    /*hsl(var(--hue), 70%, 50%)*/
-    /*background: #00500090;*/
-    background: hsl(calc(var(--hue2)), 50%, 47%);
+    background: #0006;
 }
 
 

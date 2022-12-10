@@ -7,10 +7,24 @@
     --color4: #000;
     --labelw: 200px;
 }
+body {
+    height: 100vh;
+    overflow-y: hidden;
+}
+main {
+    overflow-y: auto;
+    max-height: 100%;
+    padding: 0 var(--pad);
+    padding-bottom: 200px !important;
+}
 
 .settings {
     background: var(--color3);
     overflow-x: hidden;
+}
+
+.f2 {
+    flex-direction: row;
 }
 
 .settings main {
@@ -19,6 +33,7 @@
     margin: 0;
     padding: 0 18px;
     display: block;
+    padding-bottom: 90px !important;
 }
 
 .input {

@@ -108,7 +108,6 @@ body {
 
 main {
     padding: 0 var(--pad);
-    padding-bottom: 90px;
 }
 
 .items {
