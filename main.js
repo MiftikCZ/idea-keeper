@@ -38,6 +38,10 @@ function addOldTodo() {
     alert(v)
 }
 
+function setFocusHue(num=0) {
+    data.save("focushue",`${num}`)
+}
+
 function getDnesek(add = 0) {
     let date = new Date()
     let dt = (date.getUTCDate() + add).toString() + date.getMonth().toString() + date.getUTCFullYear().toString()
@@ -84,9 +88,7 @@ function addTodo(text = "Null", save = true, _i = il, _tm, addd = true) {
             ${text}
         </div>
         <div class="smazat" onclick="deleteTodo('${_i}')">
-            <span class="txt"><span class="material-symbols-outlined">
-                    delete
-                </span></span>
+            <span class="txt"><span class="material-symbols-outlined">delete</span></span>
         </div>
     </div>`
         if (save) {
@@ -257,6 +259,7 @@ window.onload = () => {
             :root {
                 --hue: ${myHue};
                 --hue2: ${myHue2};
+                --focushue: ${data.get("focushue") == "1" ? myHue : "33"};
             }
             ${data.get("blurtop") == "true" ? `
                         .title * {
