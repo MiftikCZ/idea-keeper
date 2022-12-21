@@ -1,6 +1,6 @@
 // load
 let style = `
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;1,400;1,600&family=Roboto:wght@300;400;500;700&family=Signika+Negative:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Poppins:wght@200;400&family=Roboto:ital,wght@0,300;0,400;0,500;1,400&family=Signika+Negative:wght@500;600;700&display=swap');
 
 * {
     box-sizing: border-box;
@@ -14,7 +14,7 @@ let style = `
 body {
     margin: 0;
     padding: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto",sans-serif;
 }
 `
 

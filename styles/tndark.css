@@ -23,5 +23,5 @@
 
 .focus {
     border: #0000 3px solid;
-    border-left: hsl(var(--focushue), 100%, 50%) 6px solid;
+    border-left: var(--focushue) 6px solid;
 }

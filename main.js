@@ -9,7 +9,6 @@ var data = {
         return localStorage.getItem(key) || null
     }
 }
-
 var il = 0
 var _data = JSON.parse(data.get("data") && data.get("data") !== "undefined" ? data.get("data") : JSON.stringify({
     todos: [{}]
@@ -81,6 +80,7 @@ function addTodo(text = "Null", save = true, _i = il, _tm, addd = true) {
         if (_tm.split(";").at(-1) == getDnesek(0) && !addd) {
             add = "focus"
         }
+
         document.getElementById("items").innerHTML +=
             `
         <div class="item ${add}" id="item-box-${_i}">
@@ -108,12 +108,6 @@ function addTodo(text = "Null", save = true, _i = il, _tm, addd = true) {
     }
     return 0
 
-}
-function resetStyles() {
-    data.save("hue", "120")
-    data.save("style", "dark")
-    data.save("hue2", "350")
-    window.location.reload()
 }
 
 function removeOld() {
@@ -259,7 +253,10 @@ window.onload = () => {
             :root {
                 --hue: ${myHue};
                 --hue2: ${myHue2};
-                --focushue: ${data.get("focushue") == "1" ? myHue : "33"};
+                --focushue: ${
+                    data.get("focushue") == "1" ? `hsl(${myHue},100%,50%)` : (
+                    data.get("focushue") == "2" ? (data.get("focuscolor") || "#666" ) : "hsl(33,100%,50%)"
+                    )};
             }
             ${data.get("blurtop") == "true" ? `
                         .title * {
@@ -349,6 +346,16 @@ var otazka = () => {
     input.onchange = _ => {
         let file =   input.files[0];
         getBase64(file)
+    };
+    input.click();
+}
+
+function setCustomFocus() {
+    let input = document.createElement('input');
+    input.type = 'color';
+    input.onchange = _ => {
+        data.save("focushue",!!input.value ? "2" : "0")
+        data.save("focuscolor",input.value || "")
     };
     input.click();
 }
