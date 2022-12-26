@@ -1,0 +1,251 @@
+/* 
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    padding: 8px;
+    border: #0001 2px solid;
+    border-radius: 5px;
+    padding-left: 20px;
+    border-left: hsl(var(--hue), 54%, 60%) 6px solid; */
+
+:root {
+    --pad: 18px;
+    --color1:#0e0e1f;
+    --color2:transparent;
+    --hue: 120;
+    font-size: 20px;
+}
+* {
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+body {
+    color: #fefeff;
+    background: #0e0e12;
+    font-family: "Poppins",sans-serif;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    padding: var(--pad);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    background: var(--color2);
+    margin-bottom: 3px;
+}
+
+
+.nic {
+    color: #bababf;
+}
+
+.f1{
+    width: 100%;
+    display: inline-flex;
+    justify-content: start;
+}
+.f1 .name {
+    font-weight: 600;
+    vertical-align: middle;
+    font-size: 1.2em;
+    rotate: -5deg;
+    color: hsl(var(--hue), 54%, 60%);
+    display: inline-flex;
+}
+
+.f1 .name2 {
+    rotate: 0deg;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.f2 {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+@media ( max-width: 620px ) {
+    .title {
+        align-items: center;
+        flex-direction: row-reverse;
+        justify-content: start;
+    display: flex;
+    }
+
+    .f1 {
+        padding: 0 40px;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .f2 {
+        width: min-content;
+        /*transform: translateY(-100%);*/
+        display: block;
+    }
+}
+
+.title .f1 .text {
+    color: #dadada;
+    font-size: 32px;
+}
+
+.title .f2 button {
+    vertical-align: middle;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    display: block;
+    color: #dadada;
+    transition: 250ms;
+    border-radius: 8px;
+    padding: 6px;
+}
+
+.title .f2 button .material-symbols-outlined {
+    font-size: 32px;
+    color: #dadada;
+}
+
+.title .f2 button .bmt2 {
+    font-weight: 600;
+}
+
+.title .f2 button:hover {
+    color: #fefeff;
+}
+
+main {
+    padding: 0 var(--pad);
+}
+
+main center {
+    text-align: start;
+}
+
+.items {
+    justify-content: start;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.items .item .text:focus {
+    outline: none;
+}
+
+.item {
+    font-size: 20px;
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    flex-direction: row;
+    border: #0001 2px solid;
+    border-radius: 5px;
+    padding-left: 20px;
+    border-left: hsl(var(--hue), 0%, 30%) 6px solid;
+}
+
+.focus {
+    border-left: hsl(var(--hue), 54%, 60%) 6px solid;
+}
+
+
+.items .item .text {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+
+
+.items .item .smazat {
+    border-radius: 8px;
+    aspect-ratio: 1/1;
+    height: 100%;
+    cursor: pointer;
+    background: #f003;
+    color: #fff5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 11px;
+    transition: 250ms;
+}
+
+.fulladcont {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    display: inline-flex;
+    width: 100%;
+}
+
+.fulladcont .addcont {
+    padding: 16px;
+    display: flex;
+    gap: 5px;
+    justify-content: start;
+    background: var(--color2);
+    border-radius: 16px 16px 0 0;
+    width: 100%;
+    max-width: 550px;
+}
+
+.addcont .add {
+    vertical-align: middle;
+    padding: 11px;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #fff8;
+    background: hsl(var(--hue), 54%, 30%);
+    transition: 250ms;
+}
+
+.smazat .txt {
+    align-items: center;
+    display: flex;
+    height: 100%;
+}
+
+.addcont .add .material-symbols-outlined {
+    font-size: 28px;
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.addcont .add:hover {
+    color: #fffe;
+}
+
+.items .item .smazat:hover {
+    color: #fffe;
+    background: #f008;
+}
+
+.inputadd {
+    color: #fefeff;
+    border: none;
+    text-align: center;
+    width: 100%;
+    vertical-align: middle;
+    background: transparent;
+    font-size: 28px;
+    transition: 250ms;
+    border-bottom: #0004 3px solid;
+}
+
+.inputadd:focus {
+    outline: none;
+    border-bottom: hsl(var(--hue), 54%, 30%) 3px solid;
+}

@@ -209,6 +209,9 @@ window.onload = () => {
         if (!window.location.pathname.includes("settings")) {
             // LOAD THEMES
             switch (myTheme.toLocaleLowerCase()) {
+                case "special1":
+                    _import("./styles/special1.css")
+                    break
                 case "superdark":
                     _import("./styles/superdark.css")
                     break
@@ -308,6 +311,9 @@ window.onload = () => {
                     document.getElementById("inp5").checked = true
                     break
     
+            case "special1":
+                document.getElementById("inp6").checked = true
+                break
 
 
             default:
