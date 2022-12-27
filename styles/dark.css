@@ -90,6 +90,7 @@ body {
 
 main {
     padding: 0 var(--pad);
+    padding-bottom: 90px !important;
 }
 
 .items {
@@ -140,7 +141,7 @@ main {
 }
 
 .fulladcont {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -154,7 +155,7 @@ main {
     display: flex;
     gap: 5px;
     justify-content: start;
-    background: #fff1;
+    background: var(--color2);
     border-radius: 16px 16px 0 0;
     width: 100%;
     max-width: 550px;

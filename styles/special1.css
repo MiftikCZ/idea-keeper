@@ -19,6 +19,12 @@
     box-sizing: border-box;
     vertical-align: middle;
 }
+
+main {
+    display: block;
+    padding-bottom: 90px !important;
+}
+
 body {
     color: #fefeff;
     background: #0e0e12;
@@ -140,7 +146,7 @@ main center {
 }
 
 .item {
-    font-size: 20px;
+    font-size: 16px;
     width: 100%;
     gap: 20px;
     display: flex;
@@ -167,7 +173,6 @@ main center {
 
 .items .item .smazat {
     border-radius: 8px;
-    aspect-ratio: 1/1;
     height: 100%;
     cursor: pointer;
     background: #f003;
@@ -194,7 +199,7 @@ main center {
     display: flex;
     gap: 5px;
     justify-content: start;
-    background: var(--color2);
+    background: #0f0f12;
     border-radius: 16px 16px 0 0;
     width: 100%;
     max-width: 550px;
