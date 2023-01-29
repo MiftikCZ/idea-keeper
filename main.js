@@ -173,6 +173,11 @@ function setHueReal() {
     document.querySelector(".hueIndc2").style.background = `linear-gradient(90deg, hsl(calc(${h2} - 10), 50%, 47%), hsl(calc(${h2} + 10), 50%, 47%))`
 }
 
+function setHue3() {
+    frawem.set("hue3", document.getElementById("hue3").value)
+    data.save("hue3", document.getElementById("hue3").value)
+}
+
 function setHue() {
     setHueReal()
     frawem.set("hue", document.getElementById("hue").value)
@@ -253,6 +258,9 @@ window.onload = () => {
 
 
             document.head.innerHTML += `<style>
+            .item {
+                font-size: ${data.get("hue3") || "22"}px !important;
+            }
             :root {
                 --hue: ${myHue};
                 --hue2: ${myHue2};
@@ -283,8 +291,10 @@ window.onload = () => {
         _import("./styles/superdark.css")
         document.getElementById("hue").value = myHue
         document.getElementById("hue2").value = myHue2
+        document.getElementById("hue3").value = data.get("hue3") || 22
         setHue()
         frawem.set("hue", document.getElementById("hue").value)
+        frawem.set("hue3",document.getElementById("hue3").value )
         switch (myTheme.toLocaleLowerCase()) {
             case "superdark":
                 document.getElementById("inp2").checked = true

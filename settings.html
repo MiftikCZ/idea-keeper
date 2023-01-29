@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings - Idea Keeper</title>
-    <script src="./main.js"></script>
     <link rel="stylesheet" href="style.css">
     <script src="./frawem/main.js"></script>
     <script>
@@ -202,6 +201,17 @@
                     </div>
                 </div>
 
+                <div class="item2">
+                    <div class="label">
+                        <span class="name">Velikost textu</span>
+                    </div>
+
+                    <div class="input">
+                        <label for="hue3" fvar="hue3" class="hue"></label>px
+
+                        <input oninput="setHue3()" type="range" min="12" max="36" step="1" id="hue3" value="22">
+                    </div>
+                </div>
 
                 <div class="item2">
                     <div class="label hueIndc1">
@@ -221,6 +231,7 @@
         </center>
     </main>
 
+    <script src="chslang.js"></script>
     <script src="main.js"></script>
 </body>
 
