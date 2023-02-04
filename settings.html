@@ -42,50 +42,39 @@
 
                     <div class="input inputradio">
                         <div>
-
                             <label for="inp2">Tmavý</label>
-
                             <input type="radio" onclick="setTheme('superdark')" value="inp2" name="theme" id="inp2"><br>
                         </div>
 
 
                         <div>
                             <label for="inp1">Tmavý++</label>
-
                             <input onclick="setTheme('dark')" type="radio" name="theme" value="inp1" id="inp1"><br>
                         </div>
 
 
                         <div>
                             <label for="inp6">Speciál</label>
-
                             <input onclick="setTheme('special1')" type="radio" name="theme" value="inp6" id="inp6"><br>
                         </div>
 
                         <div>
-
-
                             <label for="inp4">Animovaný</label>
-
                             <input type="radio" onclick="setTheme('colored2')" value="inp4" name="theme" id="inp4"> <br>
                         </div>
                         <div>
-
-
                             <label for="inp2">Barevný</label>
-
                             <input type="radio" onclick="setTheme('colored1')" value="inp3" name="theme" id="inp3"> <br>
                         </div>
+
                         <div>
-
+                            <label for="inp2">Catppuccin</label>
+                            <input type="radio" onclick="setTheme('catppuccin')" value="inpcatppuccin" name="theme" id="inpcatppuccin"> <br>
+                        </div>
+                        <div>
                             <label for="inp5">Fotka</label>
-
                             <input type="radio" onclick="setTheme('colored3')" value="inp5" name="theme" id="inp5">
                         </div>
-
-
-
-
                     </div>
                 </div>
 
@@ -136,6 +125,18 @@
                         <button onclick="setTheme3(true)" class="btn_1">Průhledný</button>
 
                         <button onclick="setTheme3(false)" class="btn_1">Neprůhledný</button>
+                    </div>
+                </div>
+
+                <div class="item2">
+                    <div class="label">
+                        <span class="name">Povolit Highliting:</span>
+                    </div>
+
+                    <div class="input" style="gap:8px;display:inline-flex;flex-wrap:wrap;">
+                        <button onclick="setHighlight(true)" class="btn_1">Povolit</button>
+
+                        <button onclick="setHighlight(false)" class="btn_1">Zakázat</button>
                     </div>
                 </div>
 
@@ -231,7 +232,7 @@
         </center>
     </main>
 
-    <script src="chslang.js"></script>
+    <!-- <script src="chslang.js"></script> -->
     <script src="main.js"></script>
 </body>
 

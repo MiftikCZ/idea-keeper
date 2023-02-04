@@ -18,6 +18,8 @@ var _import = async (url) => {
     document.querySelector("head").innerHTML += `<link rel="stylesheet" href="${url}">`
 }
 
+var _import_src = (url) => `<link rel="stylesheet" href="${url}">`
+
 function isValid(array) {
     let valid = false
     array.split(";").forEach(e => {
@@ -37,8 +39,8 @@ function addOldTodo() {
     alert(v)
 }
 
-function setFocusHue(num=0) {
-    data.save("focushue",`${num}`)
+function setFocusHue(num = 0) {
+    data.save("focushue", `${num}`)
 }
 
 function getDnesek(add = 0) {
@@ -49,19 +51,33 @@ function getDnesek(add = 0) {
 }
 
 function setBg(bg) {
-    localStorage.setItem("background",bg)
+    localStorage.setItem("background", bg)
 }
 
 function deleteTodo(id) {
     _data.todos = _data.todos.filter(e => {
-        if(e.id==id) {
-            data.save("last",e.text||"")
+        if (e.id == id) {
+            data.save("last", e.text || "")
         }
         return e.id !== id
     })
     data.save("data", JSON.stringify(_data))
     document.getElementById("item-box-" + id).remove()
     reloadTextTodos()
+}
+
+function highlight(text) {
+    // number
+    "0123456789".split("").forEach(n=>{
+        text = text.split(n).join(`<span class='txnumber'>${n}</span>`)
+    })
+
+    text = text.split(" ").map(word => {
+        if(word.startsWith("++")) word = `<span class='txcategory'>${word.replace(/\_/gi, " ").replace("++", "")}</span>`
+        return word == word.toLocaleUpperCase() && word.length > 2.9 ? `<span class='txuppercase'>${word}</span>` : word
+    }).join(" ")
+
+    return text
 }
 
 function addTodo(text = "Null", save = true, _i = il, _tm, addd = true) {
@@ -75,8 +91,10 @@ function addTodo(text = "Null", save = true, _i = il, _tm, addd = true) {
         text = document.getElementById("inputadd").value
         document.getElementById("inputadd").value = ""
     }
+    text = highlight(text)
     if (_tm.split(";")[0] == getDnesek(0) || _tm.split(";")[1] == getDnesek(0)) {
         let add = ""
+        // if((il < 6)) add = "focus"
         if (_tm.split(";").at(-1) == getDnesek(0) && !addd) {
             add = "focus"
         }
@@ -173,6 +191,10 @@ function setHueReal() {
     document.querySelector(".hueIndc2").style.background = `linear-gradient(90deg, hsl(calc(${h2} - 10), 50%, 47%), hsl(calc(${h2} + 10), 50%, 47%))`
 }
 
+function setHighlight(tt) {
+    data.save("highlight", tt)
+}
+
 function setHue3() {
     frawem.set("hue3", document.getElementById("hue3").value)
     data.save("hue3", document.getElementById("hue3").value)
@@ -189,13 +211,39 @@ function setHue() {
 }
 
 function setTheme3(d) {
-    data.save("blurtop",d)
+    data.save("blurtop", d)
 }
 
 function setTheme2(d = "dark") {
     data.save("ttheme", d)
 }
 
+const themes = {
+    "special1": _import_src("./styles/special1.css"),
+    "superdark": _import_src("./styles/superdark.css"),
+    "colored1": _import_src("./styles/colored1.css") + (data.get("ttheme") == "light" ?
+        _import_src("./styles/tnwhite.css") : _import_src("./styles/tndark.css")),
+    "colored2": _import_src("./styles/colored1.css") + _import_src("./styles/colored2.css"),
+    "colored3": _import_src("./styles/colored1.css") +
+        _import_src("./styles/tndark.css") +
+        _import_src("./styles/colored3.css") + `<style>
+    body{background:url("${data.get("background") || "./images/photo1.jpeg"}") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;}</style>`,
+    "catppuccin": _import_src("./styles/catppuccin.css")
+}
+
+const themesids = {
+    "special1": "6",
+    "colored3": "5",
+    "colored2": "4",
+    "colored1": "3",
+    "superdark": "2",
+    "dark": "1",
+    "catppuccin": "catppuccin"
+}
 window.onload = () => {
     try {
         reloadTodos()
@@ -212,47 +260,8 @@ window.onload = () => {
         myHue = myHue.toString()
         myHue2 = myHue2.toString()
         if (!window.location.pathname.includes("settings")) {
-            // LOAD THEMES
-            switch (myTheme.toLocaleLowerCase()) {
-                case "special1":
-                    _import("./styles/special1.css")
-                    break
-                case "superdark":
-                    _import("./styles/superdark.css")
-                    break
-                case "colored1":
-                    _import("./styles/colored1.css")
-                    if (data.get("ttheme") == "light") {
-                        _import("./styles/tnwhite.css")
-                    } else {
-                        _import("./styles/tndark.css")
-                    }
-                    break
-                case "colored2":
-                    _import("./styles/colored1.css")
-                    _import("./styles/colored2.css")
-                    break
-                
-                case "colored3":
-                        _import("./styles/colored1.css")
-                        _import("./styles/tndark.css")
-                        _import("./styles/colored3.css")
-                        let ttt = `<style>
-                        body{background:url("${data.get("background") || "./images/photo1.jpeg"}") no-repeat center center fixed;
-                        -webkit-background-size: cover;
-                        -moz-background-size: cover;
-                        -o-background-size: cover;
-                        background-size: cover;
+            document.head.innerHTML += themes[myTheme.toLocaleLowerCase()] || _import_src("./styles/dark.css")
 
-
-                        
-                        }</style>`
-                        document.head.innerHTML+=ttt
-                        break
-                default:
-                    _import("./styles/dark.css")
-                    break
-            }
 
 
 
@@ -264,11 +273,38 @@ window.onload = () => {
             :root {
                 --hue: ${myHue};
                 --hue2: ${myHue2};
-                --focushue: ${
-                    data.get("focushue") == "1" ? `hsl(${myHue},100%,50%)` : (
-                    data.get("focushue") == "2" ? (data.get("focuscolor") || "#666" ) : "hsl(33,100%,50%)"
-                    )};
+                --focushue: ${data.get("focushue") == "1" ? `hsl(${myHue},100%,50%)` : (
+                    data.get("focushue") == "2" ? (data.get("focuscolor") || "#666") : "hsl(33,100%,50%)"
+                )};
             }
+            ${data.get("highlight") == "true" ? `   
+                        .txnumber {
+                            color: rgb(182, 222, 182);
+                            color: hsl(220,37%,68%);
+                        }
+
+                        .txuppercase {
+                            color: hsl(0,37%,48%);
+                        }
+
+                        .txcategory {
+                            color: #fff4;
+                            font-family: monospace;
+                        }
+
+
+                        .item .text::before {
+                            color: #fff4;
+                            font-family: monospace;
+                            content: ".";
+                        }
+
+
+                        .item .txcategory::before {
+                            color: #fff4;
+                            font-family: monospace;
+                            content: "";
+                        }` : ""}
             ${data.get("blurtop") == "true" ? `
                         .title * {
                             text-shadow: #000 0 0 8px;
@@ -284,52 +320,21 @@ window.onload = () => {
             ` : ""}
             
             </style>`
-            
             return
-        }
 
+        }
         _import("./styles/superdark.css")
         document.getElementById("hue").value = myHue
         document.getElementById("hue2").value = myHue2
         document.getElementById("hue3").value = data.get("hue3") || 22
         setHue()
         frawem.set("hue", document.getElementById("hue").value)
-        frawem.set("hue3",document.getElementById("hue3").value )
-        switch (myTheme.toLocaleLowerCase()) {
-            case "superdark":
-                document.getElementById("inp2").checked = true
-                break
+        frawem.set("hue3", document.getElementById("hue3").value)
+        let elem = document.getElementById(
+            "inp" + themesids[data.get("theme")]
+        ) || document.getElementById("inp1")
+        elem.checked = true
 
-            case "dark":
-                document.getElementById("inp1").checked = true
-                break
-
-
-            case "colored1":
-                document.getElementById("inp3").checked = true
-                break
-
-
-
-            case "colored2":
-                document.getElementById("inp4").checked = true
-                break
-
-            
-
-            case "colored3":
-                    document.getElementById("inp5").checked = true
-                    break
-    
-            case "special1":
-                document.getElementById("inp6").checked = true
-                break
-
-
-            default:
-                document.getElementById("inp1").checked = true
-                break
-        }
         switch (myTheme2.toLocaleLowerCase()) {
             case "light":
                 document.getElementById("tn2").checked = true
@@ -349,18 +354,18 @@ function getBase64(file) {
     var reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = function () {
-      setBg(reader.result.toString());
+        setBg(reader.result.toString());
     };
     reader.onerror = function (error) {
-      console.log('Error: ', error);
+        console.log('Error: ', error);
     };
- }
+}
 
 var otazka = () => {
     let input = document.createElement('input');
     input.type = 'file';
     input.onchange = _ => {
-        let file =   input.files[0];
+        let file = input.files[0];
         getBase64(file)
     };
     input.click();
@@ -370,8 +375,8 @@ function setCustomFocus() {
     let input = document.createElement('input');
     input.type = 'color';
     input.onchange = _ => {
-        data.save("focushue",!!input.value ? "2" : "0")
-        data.save("focuscolor",input.value || "")
+        data.save("focushue", !!input.value ? "2" : "0")
+        data.save("focuscolor", input.value || "")
     };
     input.click();
 }

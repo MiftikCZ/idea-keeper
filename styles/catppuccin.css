@@ -1,6 +1,6 @@
 :root {
     --pad: 18px;
-    --color2:#111;
+    --color2:#1e2030;
     --hue: 120;
     --hue2:350;
 }
@@ -8,8 +8,8 @@
     box-sizing: border-box;
 }
 body {
-    color: #fefeff;
-    background: linear-gradient(90deg, hsl(calc(var(--hue2) - 10), 50%, 47%), hsl(calc(var(--hue2) + 10), 50%, 47%));
+    color: #cad3f5;
+    background: #24273a;
 }
 
 .title {
@@ -37,7 +37,7 @@ body {
     vertical-align: middle;
     font-size: 1.2em;
     display: inline-block;
-    color: hsl(var(--hue), 37%, 48%);
+    color: #a6da95;
 }
 
 .f1 .name2 {
@@ -89,13 +89,13 @@ body {
     border: none;
     background: transparent;
     display: block;
-    color: #dadada;
+    color: #a5adcb;
     transition: 250ms;
 }
 
 .title .f2 button .material-symbols-outlined {
     font-size: 32px;
-    color: #bebebf;
+    color: #a5adcb;
 }
 
 .title .f2 button .bmt2 {
@@ -115,13 +115,13 @@ body {
 }
 
 .item {
-    color: #eee;
+    border: #0002 1px solid;
     display: inline-flex;
     justify-content: start;
-    background: #0009;
-    border: #0000 4px solid;
+    background: #181926;
+    border: #0000 2px solid;
     border-radius: 0px 5px 5px 0px;
-    border-left: #0005 6px solid;
+    border-left: #363a4f 6px solid;
     width: 100%;
     transition: 250ms;
 }
@@ -131,8 +131,8 @@ body {
 }
 
 .focus {
-    border: #0002 2px solid;
-    border-left: rgb(255, 234, 0) 6px solid;
+    border: #0002 1px solid;
+    border-left: #ed8796 6px solid;
     background: #0006;
 }
 
@@ -147,12 +147,12 @@ body {
 
 .items .item .smazat {
     cursor: pointer;
-    background: #f003;
     color: #fff5;
     display: flex;
     align-items: center;
     padding: 0 8px;
     transition: 250ms;
+    border-right: transparent 2px solid;
 }
 
 .items .focus .smazat {
@@ -187,8 +187,8 @@ body {
     padding: 8px;
     cursor: pointer;
     border-radius: 8px;
-    color: #fff8;
-    background: hsl(var(--hue), 54%, 30%);
+    color: #b8c0e0;
+    background: #6e738d;
     transition: 250ms;
 }
 
@@ -205,8 +205,9 @@ body {
 }
 
 .items .item .smazat:hover {
-    color: #fffe;
-    background: #f008;
+    color: #ed8796;
+    background: #ed879610;
+    border-right: #ed8796 2px solid;
 }
 
 .inputadd {
@@ -218,10 +219,10 @@ body {
     background: transparent;
     font-size: 28px;
     transition: 250ms;
-    border-bottom: #0004 3px solid;
+    border-bottom: #181926 3px solid;
 }
 
 .inputadd:focus {
     outline: none;
-    border-bottom: hsl(var(--hue), 54%, 30%) 3px solid;
+    border-bottom: #6e738d 3px solid;
 }
