@@ -1,0 +1,42 @@
+body {
+    background: #06121A;
+    color: #dbf7c7 !important;
+}
+
+.item {
+    color: #f0fdffeb;
+    background: #17353497;
+    border-left: #7CB87840 6px solid;
+}
+
+.focus {
+    background: #1e4745dc;
+    border-left: #76D6E8 6px solid;
+}
+
+
+.items .item .smazat:hover {
+    color: #2695C9;
+    background: #2695C910;
+    border-right: #2695C9 2px solid;
+}
+
+
+.addcont .add {
+    color: #76D6E8;
+    background: #2D689B;
+}
+
+.inputadd:focus {
+    outline: none;
+    border-bottom: #2D689B 3px solid;
+}
+
+.f1 .name {
+    font-weight: 600;
+    rotate: -5deg;
+    vertical-align: middle;
+    font-size: 1.2em;
+    display: inline-block;
+    color: #2695C9;
+}

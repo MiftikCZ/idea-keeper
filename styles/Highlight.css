@@ -1,0 +1,27 @@
+.txnumber {
+    color: rgb(182, 222, 182);
+    color: hsl(220,37%,68%);
+}
+
+.txuppercase {
+    color: hsl(0,37%,48%);
+}
+
+.txcategory {
+    color: #fff4;
+    font-family: monospace;
+}
+
+
+.item .text::before {
+    color: #fff4;
+    font-family: monospace;
+    content: ".";
+}
+
+
+.item .txcategory::before {
+    color: #fff4;
+    font-family: monospace;
+    content: "";
+}

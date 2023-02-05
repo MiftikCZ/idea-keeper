@@ -68,12 +68,12 @@ function deleteTodo(id) {
 
 function highlight(text) {
     // number
-    "0123456789".split("").forEach(n=>{
+    "0123456789".split("").forEach(n => {
         text = text.split(n).join(`<span class='txnumber'>${n}</span>`)
     })
 
     text = text.split(" ").map(word => {
-        if(word.startsWith("++")) word = `<span class='txcategory'>${word.replace(/\_/gi, " ").replace("++", "")}</span>`
+        if (word.startsWith("++")) word = `<span class='txcategory'>${word.replace(/\_/gi, " ").replace("++", "")}</span>`
         return word == word.toLocaleUpperCase() && word.length > 2.9 ? `<span class='txuppercase'>${word}</span>` : word
     }).join(" ")
 
@@ -218,32 +218,78 @@ function setTheme2(d = "dark") {
     data.save("ttheme", d)
 }
 
-const themes = {
-    "special1": _import_src("./styles/special1.css"),
-    "superdark": _import_src("./styles/superdark.css"),
-    "colored1": _import_src("./styles/colored1.css") + (data.get("ttheme") == "light" ?
-        _import_src("./styles/tnwhite.css") : _import_src("./styles/tndark.css")),
-    "colored2": _import_src("./styles/colored1.css") + _import_src("./styles/colored2.css"),
-    "colored3": _import_src("./styles/colored1.css") +
-        _import_src("./styles/tndark.css") +
-        _import_src("./styles/colored3.css") + `<style>
-    body{background:url("${data.get("background") || "./images/photo1.jpeg"}") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;}</style>`,
-    "catppuccin": _import_src("./styles/catppuccin.css")
+function _focus_color(clr) {
+    return `
+    .focus {border-left: ${clr} 6px solid;}`
 }
 
-const themesids = {
-    "special1": "6",
-    "colored3": "5",
-    "colored2": "4",
-    "colored1": "3",
-    "superdark": "2",
-    "dark": "1",
-    "catppuccin": "catppuccin"
+function _as_css(text) {
+    return `<style>${text}</style>`
 }
+
+const themes = {
+    "special1": 
+        _import_src("./styles/special1.css"),
+    "superdark": 
+        _import_src("./styles/superdark.css"),
+    "colored1": 
+        _import_src("./styles/colored1.css") + 
+        (data.get("ttheme") == "light" ?
+        _import_src("./styles/tnwhite.css") : _import_src("./styles/tndark.css")),
+    "colored2": 
+        _import_src("./styles/colored1.css") + 
+        _import_src("./styles/colored2.css"),
+    "colored3":
+        _import_src("./styles/colored1.css") +
+        _import_src("./styles/tndark.css") +
+        _import_src("./styles/colored3.css") +
+        `<style>
+            body{
+                background:url("${data.get("background") || "./images/photo1.jpeg"}") no-repeat center center fixed;
+                -webkit-background-size: cover;
+                -moz-background-size: cover;
+                -o-background-size: cover;
+                background-size: cover;
+            }
+        </style>
+        `,
+    "catppuccin": 
+        _import_src("./styles/catppuccin.css"),
+    "catppuccin_green":
+        _import_src("./styles/catppuccin.css") + 
+        _as_css(_focus_color("#a6da95")),
+    "catppuccin_purple":
+        _import_src("./styles/catppuccin.css") + 
+        _as_css(_focus_color("#c6a0f6")),
+    "catppuccin_blue":
+        _import_src("./styles/catppuccin.css") + 
+        _as_css(_focus_color("#8aadf4")),
+
+    "forest":
+        _import_src("./styles/catppuccin.css") + 
+        _import_src("./styles/forest.css"),
+
+    
+    "ocean":
+        _import_src("./styles/catppuccin.css") + 
+        _import_src("./styles/ocean.css"),
+}
+
+const themes_names = {
+    "special1":           "Speciální",
+    "superdark":          "Tmavý",
+    "dark":               "Tmavý++",
+    "colored1":           "Barevný",
+    "colored2":           "Animovaný",
+    "colored3":           "Fotka",
+    "catppuccin":         "Catppucin",
+    "catppuccin_purple":  "Catppucin Fialová",
+    "catppuccin_green":   "Catppucin Zelená",
+    "catppuccin_blue":    "Catppucin Modrá",
+    "forest":             "Džungle",
+    "ocean":              "Oceán",
+}
+
 window.onload = () => {
     try {
         reloadTodos()
@@ -263,10 +309,9 @@ window.onload = () => {
             document.head.innerHTML += themes[myTheme.toLocaleLowerCase()] || _import_src("./styles/dark.css")
 
 
-
-
-
-            document.head.innerHTML += `<style>
+            document.head.innerHTML += `
+${data.get("highlight") == "true" ? _import_src("./styles/Highlight.css") : ""}
+            <style>
             .item {
                 font-size: ${data.get("hue3") || "22"}px !important;
             }
@@ -277,34 +322,7 @@ window.onload = () => {
                     data.get("focushue") == "2" ? (data.get("focuscolor") || "#666") : "hsl(33,100%,50%)"
                 )};
             }
-            ${data.get("highlight") == "true" ? `   
-                        .txnumber {
-                            color: rgb(182, 222, 182);
-                            color: hsl(220,37%,68%);
-                        }
-
-                        .txuppercase {
-                            color: hsl(0,37%,48%);
-                        }
-
-                        .txcategory {
-                            color: #fff4;
-                            font-family: monospace;
-                        }
-
-
-                        .item .text::before {
-                            color: #fff4;
-                            font-family: monospace;
-                            content: ".";
-                        }
-
-
-                        .item .txcategory::before {
-                            color: #fff4;
-                            font-family: monospace;
-                            content: "";
-                        }` : ""}
+            
             ${data.get("blurtop") == "true" ? `
                         .title * {
                             text-shadow: #000 0 0 8px;
@@ -324,6 +342,13 @@ window.onload = () => {
 
         }
         _import("./styles/superdark.css")
+       
+
+        Object.keys(themes).forEach(Name => {
+            document.getElementById("in_puts").innerHTML += `<div> <label for="inp2">${themes_names[Name]}</label>
+            <input type="radio" onclick="setTheme('${Name}')" value="inp2" name="theme" id="inp${Name}"><br>  </div>`
+        })
+
         document.getElementById("hue").value = myHue
         document.getElementById("hue2").value = myHue2
         document.getElementById("hue3").value = data.get("hue3") || 22
@@ -331,7 +356,7 @@ window.onload = () => {
         frawem.set("hue", document.getElementById("hue").value)
         frawem.set("hue3", document.getElementById("hue3").value)
         let elem = document.getElementById(
-            "inp" + themesids[data.get("theme")]
+            "inp" + data.get("theme")
         ) || document.getElementById("inp1")
         elem.checked = true
 
