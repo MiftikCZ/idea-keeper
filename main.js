@@ -66,24 +66,109 @@ function deleteTodo(id) {
     reloadTextTodos()
 }
 
+function checkforinputcmds() {
+    if(document.getElementById("inputadd").value.endsWith("//res ")) {
+        if(!!data.get("lasttodotext")) {
+            document.getElementById("inputadd").value = data.get("lasttodotext")
+        }
+    }
+
+    if(document.getElementById("inputadd").value.endsWith("//last ")) {
+        if(!!data.get("lasttodotext")) {
+            document.getElementById("inputadd").value = data.get("lasttodotext")
+        }
+    }
+
+    if(document.getElementById("inputadd").value.endsWith("//del ")) {
+        if(!!data.get("lasttodotext")) {
+            document.getElementById("inputadd").value = ""
+        }
+    }
+
+    if(document.getElementById("inputadd").value.endsWith("//plus ")) {
+        if(!!data.get("lasttodotext")) {
+            document.getElementById("inputadd").value = "++"
+        }
+    }
+
+    if(document.getElementById("inputadd").value.endsWith("//color ")) {
+        if(!!data.get("lasttodotext")) {
+            document.getElementById("inputadd").value = "++kategorie **žlutě ČERVENĚ !!nl ahoj !!nl ahoj"
+        }
+    }
+
+    if(document.getElementById("inputadd").value.endsWith("//help ")) {
+        if(!!data.get("lasttodotext")) {
+            document.getElementById("inputadd").value = `++: **use_//_instead_of_/ !!nl ++: /res /last /del /plus /color /help !!nl ++: **/idea_app /idea web **/idea_func /idea idea`
+        }
+    }
+
+    if(document.getElementById("inputadd").value.endsWith("//idea app ")) {
+        if(!!data.get("lasttodotext")) {
+            document.getElementById("inputadd").value = "++nová_apka "
+        }
+    }
+
+    if(document.getElementById("inputadd").value.endsWith("//idea web ")) {
+        if(!!data.get("lasttodotext")) {
+            document.getElementById("inputadd").value = "++nový_web "
+        }
+    }
+
+    if(document.getElementById("inputadd").value.endsWith("//idea func ")) {
+        if(!!data.get("lasttodotext")) {
+            document.getElementById("inputadd").value = "++nová_funkce přidat **"
+        }
+    }
+
+    if(document.getElementById("inputadd").value.endsWith("//idea idea ")) {
+        if(!!data.get("lasttodotext")) {
+            document.getElementById("inputadd").value = "++idea_keeper "
+        }
+    }
+
+    if(document.getElementById("inputadd").value.endsWith("//idea edu ")) {
+        if(!!data.get("lasttodotext")) {
+            document.getElementById("inputadd").value = "++naučit_se "
+        }
+    }
+}
+
 function highlight(text) {
     // number
+
     "0123456789".split("").forEach(n => {
         text = text.split(n).join(`<span class='txnumber'>${n}</span>`)
     })
 
     text = text.split(" ").map(word => {
         if (word.startsWith("++")) word = `<span class='txcategory'>${word.replace(/\_/gi, " ").replace("++", "")}</span>`
+        if (word.startsWith("**")) word = `<span class='txstring'>${word.slice(2).replace(/\_/gi, " ").replace("++", "")}</span>`
         return word == word.toLocaleUpperCase() && word.length > 2.9 ? `<span class='txuppercase'>${word}</span>` : word
     }).join(" ")
+
+    text = text.split("!!nl").join("<br>")
 
     return text
 }
 
-function addTodo(text = "Null", save = true, _i = il, _tm, addd = true) {
-    if (!_tm) _tm = getDnesek(0)
-    if (_i == il) _i++
-    il++
+function addTodo(text = "Null", save = true, e) {
+    if(save && !!document.getElementById("inputadd").value) {
+        data.save("lasttodotext", document.getElementById("inputadd").value)
+        _data.todos.push({
+            id: (Date.now()).toString(),
+            text: document.getElementById("inputadd").value,
+            time: (() => {
+                let date = new Date()
+                let dt = date.getUTCDate().toString() + date.getMonth().toString() + date.getUTCFullYear().toString() + ";" + (date.getUTCDate() + 1).toString() + date.getMonth().toString() + date.getUTCFullYear().toString()
+                return dt
+            })()
+        })
+        data.save("data", JSON.stringify(_data))
+        
+        reloadTodos()
+        return
+    }
     if (text == "Null") {
         if (!document.getElementById("inputadd").value) {
             return 0
@@ -92,36 +177,24 @@ function addTodo(text = "Null", save = true, _i = il, _tm, addd = true) {
         document.getElementById("inputadd").value = ""
     }
     text = highlight(text)
-    if (_tm.split(";")[0] == getDnesek(0) || _tm.split(";")[1] == getDnesek(0)) {
+    if(!e.time) return 0
+    if (e.time.split(";")[0] == getDnesek(0) || e.time.split(";")[1] == getDnesek(0)) {
         let add = ""
         // if((il < 6)) add = "focus"
-        if (_tm.split(";").at(-1) == getDnesek(0) && !addd) {
+        if (e.time.split(";").at(-1) == getDnesek(0)) {
             add = "focus"
         }
 
         document.getElementById("items").innerHTML +=
             `
-        <div class="item ${add}" id="item-box-${_i}">
+        <div class="item ${add}" id="item-box-${e.id}">
         <div class="text">
             ${text}
         </div>
-        <div class="smazat" onclick="deleteTodo('${_i}')">
+        <div class="smazat" onclick="deleteTodo('${e.id}')">
             <span class="txt"><span class="material-symbols-outlined">delete</span></span>
         </div>
     </div>`
-        if (save) {
-            _data.todos.push({
-                id: _i.toString(),
-                text,
-                time: (() => {
-                    let date = new Date()
-                    let dt = date.getUTCDate().toString() + date.getMonth().toString() + date.getUTCFullYear().toString() + ";" + (date.getUTCDate() + 1).toString() + date.getMonth().toString() + date.getUTCFullYear().toString()
-                    return dt
-                })()
-            })
-            data.save("data", JSON.stringify(_data))
-            reloadTextTodos()
-        }
         return 1
     }
     return 0
@@ -151,11 +224,12 @@ function getInt(int) {
 function reloadTextTodos() {
     let l = (
         _data.todos.filter(
-            e => e.time
-                && (
-                    e.time.split(";")[0] == getDnesek(0)
-                    || e.time.split(";")[1] == getDnesek(0)
-                )
+            e =>       
+                    !!e.time
+                    && (
+                        e.time.split(";")[0] == getDnesek(0)
+                        || e.time.split(";")[1] == getDnesek(0)
+                    ) && e.text !== "Null"
         )
     ).length
     frawem.set("ideas",
@@ -173,8 +247,10 @@ function reloadTextTodos() {
 }
 function reloadTodos() {
     reloadTextTodos()
+    document.getElementById("items").innerHTML = ""
     _data.todos.forEach(e => {
-        addTodo(e.text, false, e.id, e.time, false)
+        //addTodo(e.text, false, e.id, e.time, false)
+        addTodo(e.text,false,e)
     })
 }
 function setTheme(theme = "dark") {

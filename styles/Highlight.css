@@ -12,16 +12,18 @@
     font-family: monospace;
 }
 
+.txstring {
+    color: hsl(60, 50%, 55%);
+}
 
+/* 
 .item .text::before {
     color: #fff4;
     font-family: monospace;
     content: ".";
-}
+}*/
 
-
-.item .txcategory::before {
-    color: #fff4;
-    font-family: monospace;
-    content: "";
-}
+/* 
+.item .txcategory::after {
+    content: ":";
+}  */
